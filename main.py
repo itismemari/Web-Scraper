@@ -1,5 +1,6 @@
 import streamlit as st
 from Scrape import scrape_website , split_dom_content , clean_body_content , extract_content_from_html
+from llm import parse_with_ollama
 
 st.title("URL Scraper")
 
@@ -24,5 +25,7 @@ if "dom_content" in st.session_state:
             st.write("parsing the content ...")
 
             chunks = split_dom_content(st.session_state.dom_content)
+            result = parse_with_ollama(chunks , parse_description)
+            st.write(result)
             
 

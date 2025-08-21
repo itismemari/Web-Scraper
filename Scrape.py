@@ -5,8 +5,11 @@ from selenium.webdriver.chromium.remote_connection import ChromiumRemoteConnecti
 from selenium.webdriver.common.by import By
 import time
 from bs4 import BeautifulSoup
+from dotenv import dotenv_values
 
-AUTH = 'brd-customer-hl_875b96c4-zone-scraping_browser1:lzrkc2t9m92t'
+config = dotenv_values(".env")
+
+AUTH = config.AUTH
 SBR_WEBDRIVER = f'https://{AUTH}@brd.superproxy.io:9515'
 
 def scrape_website(website):
